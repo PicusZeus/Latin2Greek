@@ -3,7 +3,7 @@
 
 def create_a_database():
     """
-	create database if needed
+    create database if needed
     """
     import shelve
     db = shelve.open('list_of_words')  
@@ -32,16 +32,16 @@ def list_of_words(text):
 
 
 def clean(word):
-	"""
-	cleans a word from punctuation, numbers etc.
-	"""
-	to_be_replaced = {",": "", ".": "", "\\": "", ":": "", "æ": "ae",
-	 ":": "", "?": "", "!": "", "\x9c": "oe", ";": "", "(": "", ")": "", "0": "",
-	  "1": "", "2": "","3": "", "4": "","5": "", "6": "","7": "", "8": "", "9": ""}   
-	
-	for key in to_be_replaced.keys():
-		word = word.replace(key, to_be_replaced[key])
-	return word
+    """
+    cleans a word from punctuation, numbers etc.
+    """
+    to_be_replaced = {",": "", ".": "", "\\": "", ":": "", "æ": "ae",
+     ":": "", "?": "", "!": "", "\x9c": "oe", ";": "", "(": "", ")": "", "0": "",
+      "1": "", "2": "","3": "", "4": "","5": "", "6": "","7": "", "8": "", "9": ""}   
+    
+    for key in to_be_replaced.keys():
+        word = word.replace(key, to_be_replaced[key])
+    return word
     
 
 def list_of_clean_words(text):
@@ -61,12 +61,12 @@ def list_of_clean_words(text):
 
 def store_words(text):
 
-	
-	"""
+    
+    """
     adds words from a given text to a database of Latin or Greek words.
     It also checks if a given file has been loaded (by its name), and if so it stops loading the words
     """ 
-	
+    
     file_name = str(text)
     print(file_name)
     import os.path
@@ -82,7 +82,7 @@ def store_words(text):
         import shelve
         db = shelve.open('list_of_words')
         if language.lower() == 'latin':
-        	
+            
             if not file_name in db['Latin_texts']:  
                 latin = list_of_clean_words(text) 
                 db['Latin_words'] += latin
@@ -111,6 +111,6 @@ def store_words(text):
             print('ok')
     
 
-	
+    
 if __name__ == '__main__':
     pass
